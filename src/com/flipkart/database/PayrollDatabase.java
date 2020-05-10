@@ -4,8 +4,6 @@ import com.flipkart.implementations.Employee;
 import java.util.*;
 
 public class PayrollDatabase {
-    public static PayrollDatabase globalPayrollDatabase = new PayrollDatabase();
-
     private Map<Integer, Employee> employees = new HashMap<Integer, Employee>();
 
     public Employee getEmployee(int employeeId) {
@@ -21,7 +19,11 @@ public class PayrollDatabase {
     }
 
     public void deleteEmployee(int employeeId) {
-        employees.put(employeeId, null);
+        if(!employees.containsKey(employeeId)){
+            System.out.println("Couldn't delete Employee Id: Employee doesn't exist");
+        }else{
+            employees.put(employeeId, null);
+        }
     }
 
     public Set<Integer> getAllEmployeeIds() {
