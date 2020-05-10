@@ -1,5 +1,8 @@
 package com.flipkart.database;
+import com.flipkart.implementations.CommissionBasedEmployee;
 import com.flipkart.implementations.Employee;
+import com.flipkart.implementations.HourlyPaidEmployee;
+import com.flipkart.implementations.SalariedEmployee;
 
 import java.util.*;
 
@@ -22,11 +25,37 @@ public class PayrollDatabase {
         if(!employees.containsKey(employeeId)){
             System.out.println("Couldn't delete Employee Id: Employee doesn't exist");
         }else{
-            employees.put(employeeId, null);
+            employees.remove(employeeId);
         }
     }
 
     public Set<Integer> getAllEmployeeIds() {
         return employees.keySet();
+    }
+
+
+    public boolean isEmloyeePresent(int employeeId){
+        return employees.containsKey(employeeId);
+    }
+
+    public boolean isHourlyPaidEmployee(int employeeId){
+        if(!isEmloyeePresent(employeeId)){
+            return false;
+        }
+        return employees.get(employeeId) instanceof HourlyPaidEmployee;
+    }
+
+    public boolean isSalariedEmployee(int employeeId){
+        if(!isEmloyeePresent(employeeId)){
+            return false;
+        }
+        return employees.get(employeeId) instanceof SalariedEmployee;
+    }
+
+    public boolean isCommissionBasedEmployee(int employeeId){
+        if(!isEmloyeePresent(employeeId)){
+            return false;
+        }
+        return employees.get(employeeId) instanceof CommissionBasedEmployee;
     }
 }
