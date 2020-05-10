@@ -1,8 +1,12 @@
 package com.flipkart;
 
-public class Main {
+import com.flipkart.implementations.AppRunner;
 
+import java.util.Scanner;
+
+public class Main {
     public static void main(String[] args) {
-	    System.out.println(43);
+        AppRunner runner = new AppRunner();
+        runner.run();
     }
 }
