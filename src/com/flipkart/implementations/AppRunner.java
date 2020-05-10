@@ -100,7 +100,7 @@ public class AppRunner {
         }catch (NumberFormatException ex){
             System.out.println("Couldn't post Sales Receipt: Not provided valid Employee Id\n");
         }
-    }
+    }  
 
     private void printEmployees(PayrollDatabase databaseObject){
         for(Integer empId: databaseObject.getAllEmployeeIds()){
